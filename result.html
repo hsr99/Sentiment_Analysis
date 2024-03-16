@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Light gray */
+            color: #343a40; /* Dark gray text */
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff; /* Blue */
+            margin-bottom: 20px;
+        }
+
+        .result-container {
+            background-color: #ffffff; /* White */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sentiment {
+            color: #0c0431; /* Green */
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Sentiment Analysis Result</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6 result-container">
+                <p class="text-center">The sentiment of the review is: <span class="sentiment">{{ sentiment }}</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

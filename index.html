@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; 
+            color: #343a40; 
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff; 
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #ffffff; 
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 18px;
+            color: #007bff; 
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #007bff; 
+            border-radius: 5px;
+            background-color: #ffffff; 
+            color: #343a40; 
+            resize: vertical; 
+        }
+
+        input[type="submit"] {
+            background-color: #007bff; 
+            color: #ffffff; 
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; 
+        }
+
+        .error-message {
+            color: #dc3545; 
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .success-message {
+            color: #28a745; 
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Sentiment Analysis</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="reviewForm" action="/analyze_sentiment" method="post">
+                    <div class="form-group">
+                        <label for="review">Enter your review:</label>
+                        <textarea id="review" name="review" rows="4" placeholder="Type your review here..." class="form-control"></textarea>
+                    </div>
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    <div id="successMessage" class="success-message" style="display: none;"></div>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("reviewForm").addEventListener("submit", function(event) {
+            var reviewText = document.getElementById("review").value.trim();
+            var errorMessageElement = document.getElementById("errorMessage");
+            var successMessageElement = document.getElementById("successMessage");
+
+            if (!reviewText) {
+                errorMessageElement.innerText = "Please enter a review.";
+                errorMessageElement.style.display = "block";
+                successMessageElement.style.display = "none";
+                event.preventDefault(); // Prevent form submission
+            } else {
+                errorMessageElement.style.display = "none";
+                successMessageElement.innerText = "Review submitted successfully!";
+                successMessageElement.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
